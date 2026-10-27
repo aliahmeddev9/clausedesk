@@ -1,0 +1,59 @@
+name: Verify ClauseDesk
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: clausedesk
+          POSTGRES_PASSWORD: clausedesk
+          POSTGRES_DB: clausedesk_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U clausedesk -d clausedesk_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://clausedesk:clausedesk@localhost:5432/clausedesk_test
+      DEMO_PASSWORD: local-demo-password
+      PUBLIC_DEMO: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: bin/rails db:prepare test
+        env:
+          RAILS_ENV: test
+      - run: bundle exec brakeman -q --no-pager --exit-on-warn
+      - run: bin/rails runner script/evaluate_extraction.rb
+      - run: npm ci --prefix frontend
+      - run: npm run format:check --prefix frontend
+      - run: npm run build --prefix frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: bin/rails db:seed
+      - run: |
+          bin/rails server -b 127.0.0.1 -p 3017 > tmp/api.log 2>&1 &
+          npm run dev --prefix frontend > tmp/web.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:3017/up && curl -fsS http://127.0.0.1:5179/; then break; fi
+            sleep 1
+          done
+          npm run test:e2e --prefix frontend
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-failure-evidence
+          path: |
+            frontend/test-results/
+            tmp/api.log
+            tmp/web.log

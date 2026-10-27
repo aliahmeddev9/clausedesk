@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+bin/rails server -b 127.0.0.1 -p 3017 &
+api_pid=$!
+trap 'kill "$api_pid" 2>/dev/null || true' EXIT
+npm run dev --prefix frontend

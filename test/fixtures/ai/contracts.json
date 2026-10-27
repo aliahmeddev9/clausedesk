@@ -1,0 +1,167 @@
+[
+  {
+    "name": "unlabeled-prose",
+    "pages": [
+      {
+        "number": 1,
+        "text": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario."
+      }
+    ],
+    "provider_output": {
+      "counterparty": {
+        "value": "Harbor Lantern Ltd.",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      },
+      "effective_date": {
+        "value": "1 December 2026",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      },
+      "renewal_date": {
+        "value": null,
+        "evidence": null,
+        "page": null,
+        "uncertainty": "No renewal date is stated."
+      },
+      "annual_value": {
+        "value": "USD 24,000",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      },
+      "notice_period": {
+        "value": "30 days",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      },
+      "governing_law": {
+        "value": "Ontario",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      }
+    },
+    "expected_values": {
+      "counterparty": "Harbor Lantern Ltd.",
+      "effective_date": "1 December 2026",
+      "renewal_date": null,
+      "annual_value": "USD 24,000",
+      "notice_period": "30 days",
+      "governing_law": "Ontario"
+    }
+  },
+  {
+    "name": "conflicting-dates",
+    "pages": [
+      {
+        "number": 1,
+        "text": "The effective date is 1 May 2027. A conflicting addendum calls the effective date 1 June 2027. Neither takes precedence. All other commercial terms remain undecided."
+      }
+    ],
+    "provider_output": {
+      "counterparty": {
+        "value": null,
+        "evidence": null,
+        "page": null,
+        "uncertainty": "Missing or ambiguous in source."
+      },
+      "effective_date": {
+        "value": null,
+        "evidence": null,
+        "page": null,
+        "uncertainty": "Missing or ambiguous in source."
+      },
+      "renewal_date": {
+        "value": null,
+        "evidence": null,
+        "page": null,
+        "uncertainty": "Missing or ambiguous in source."
+      },
+      "annual_value": {
+        "value": null,
+        "evidence": null,
+        "page": null,
+        "uncertainty": "Missing or ambiguous in source."
+      },
+      "notice_period": {
+        "value": null,
+        "evidence": null,
+        "page": null,
+        "uncertainty": "Missing or ambiguous in source."
+      },
+      "governing_law": {
+        "value": null,
+        "evidence": null,
+        "page": null,
+        "uncertainty": "Missing or ambiguous in source."
+      }
+    },
+    "expected_values": {
+      "counterparty": null,
+      "effective_date": null,
+      "renewal_date": null,
+      "annual_value": null,
+      "notice_period": null,
+      "governing_law": null
+    }
+  },
+  {
+    "name": "forged-citation",
+    "pages": [
+      {
+        "number": 1,
+        "text": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario."
+      }
+    ],
+    "provider_output": {
+      "counterparty": {
+        "value": "Harbor Lantern Ltd.",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      },
+      "effective_date": {
+        "value": "1 December 2026",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      },
+      "renewal_date": {
+        "value": null,
+        "evidence": null,
+        "page": null,
+        "uncertainty": "No renewal date is stated."
+      },
+      "annual_value": {
+        "value": "USD 24,000",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      },
+      "notice_period": {
+        "value": "30 days",
+        "evidence": "This fictional services agreement is between Harbor Lantern Ltd. and the customer. It begins on 1 December 2026. The annual fee is USD 24,000. Either party may give 30 days notice. The agreement is governed by the laws of Ontario.",
+        "page": 1,
+        "uncertainty": null
+      },
+      "governing_law": {
+        "value": "California",
+        "evidence": "Governed by California law.",
+        "page": 99,
+        "uncertainty": null
+      }
+    },
+    "expected_values": {
+      "counterparty": "Harbor Lantern Ltd.",
+      "effective_date": "1 December 2026",
+      "renewal_date": null,
+      "annual_value": "USD 24,000",
+      "notice_period": "30 days",
+      "governing_law": null
+    }
+  }
+]

@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+"""Stage provider configuration without echoing credentials or saving a file."""
+import getpass
+import shutil
+import subprocess
+import sys
+
+fly = shutil.which("fly") or shutil.which("flyctl")
+if not fly:
+    sys.exit("Install the Fly CLI and authenticate before running this command.")
+model = input("OpenAI model ID for evaluation: ").strip()
+key = getpass.getpass("OpenAI API key (hidden): ").strip()
+if not model or not key or any(c in model + key for c in "\r\n"):
+    sys.exit("A model ID and a single-line key are required.")
+result = subprocess.run(
+    [fly, "secrets", "import", "-a", "a3-clausedesk", "--stage"],
+    input=f"OPENAI_MODEL={model}\nOPENAI_API_KEY={key}\n",
+    text=True,
+    capture_output=True,
+)
+if result.returncode:
+    sys.exit("Secret staging failed. Check Fly authentication and app access; credentials were not printed.")
+print("Secrets staged securely. Notify your deployment operator to apply and evaluate them.")
+print("Staging does not start the app or call OpenAI.")

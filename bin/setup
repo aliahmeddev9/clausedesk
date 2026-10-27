@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+APP_ROOT = File.expand_path('..', __dir__)
+Dir.chdir(APP_ROOT) do
+  abort 'Set DEMO_PASSWORD (at least 12 characters) before setup.' unless ENV['DEMO_PASSWORD']&.length.to_i >= 12
+  system('bundle install', exception: true)
+  system('npm ci --prefix frontend', exception: true)
+  system('docker compose up -d --wait db', exception: true)
+  system('bin/rails db:prepare', exception: true)
+  puts 'Ready. Start bin/rails server -p 3017 and npm run dev --prefix frontend.'
+end

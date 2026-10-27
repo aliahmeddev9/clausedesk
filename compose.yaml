@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: clausedesk
+      POSTGRES_PASSWORD: clausedesk
+      POSTGRES_DB: clausedesk_development
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - clausedesk_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clausedesk -d clausedesk_development"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+volumes:
+  clausedesk_db:

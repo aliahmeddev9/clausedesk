@@ -1,0 +1,22 @@
+NORTHSTAR / SERVICES AGREEMENT
+Fictional portfolio sample · No real client information
+
+01  PARTIES AND TERM
+This agreement describes a fictional annual service engagement.
+Counterparty: Northstar Studio Ltd.
+Effective date: 2026-11-01
+Renewal date: 2027-11-01
+
+02  COMMERCIAL TERMS
+Annual value: USD 48,000
+Fees are invoiced quarterly in four equal installments. Additional work requires a separately approved scope.
+
+03  NOTICE AND TERMINATION
+Notice period: 60 days before renewal
+Either party may decline renewal by delivering written notice within this period. Outstanding approved work remains payable.
+
+04  SERVICE OBLIGATIONS
+The supplier provides monthly reporting and scheduled support reviews. Material scope changes require written approval from both parties.
+
+05  REVIEW NOTE
+The governing-law clause is intentionally absent. A reviewer must record that omission or add a supported correction; the extractor must not invent a jurisdiction.
